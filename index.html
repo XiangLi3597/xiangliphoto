@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>你的名字 | 摄影作品集</title>
+  <meta name="description" content="个人摄影作品展示：微距、昆虫、植物与自然生态摄影。">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: #222;
+      background: #f7f7f7;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 56px 0 40px;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: 1px;
+    }
+    .hero p {
+      margin: 0 0 18px;
+      color: #d6d6d6;
+      max-width: 700px;
+    }
+    .hero .links a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-top: 8px;
+      padding: 10px 14px;
+      border: 1px solid #555;
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+    .hero .links a:hover {
+      border-color: #fff;
+      background: #1f1f1f;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+    .about {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+    .card .caption {
+      padding: 10px 12px 14px;
+      font-size: 14px;
+    }
+
+    .contact {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: #666;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ececec;
+      font-size: 13px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container hero">
+      <h1>你的名字 / Your Name</h1>
+      <p>
+        自然与微距摄影师，专注昆虫、植物与生态环境中的微小生命。
+        用影像记录尺度之外的世界。
+      </p>
+      <div class="links">
+        <a href="#portfolio">查看作品</a>
+        <a href="mailto:your@email.com">联系我</a>
+        <a href="https://instagram.com/yourname" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title">关于我</h2>
+      <div class="about">
+        <p>
+          这里写你的简介：你拍摄什么题材、在哪些地区拍摄、你的创作方向、获奖经历（如有）、
+          是否接受合作（投稿、展览、出版、讲座等）。
+        </p>
+        <div>
+          <span class="tag">微距摄影</span>
+          <span class="tag">昆虫摄影</span>
+          <span class="tag">植物摄影</span>
+          <span class="tag">自然生态</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2 class="section-title">作品集</h2>
+      <div class="gallery">
+        <div class="card">
+          <img src="images/photo1.jpg" alt="作品1">
+          <div class="caption">作品标题 1｜拍摄地｜年份</div>
+        </div>
+        <div class="card">
+          <img src="images/photo2.jpg" alt="作品2">
+          <div class="caption">作品标题 2｜拍摄地｜年份</div>
+        </div>
+        <div class="card">
+          <img src="images/photo3.jpg" alt="作品3">
+          <div class="caption">作品标题 3｜拍摄地｜年份</div>
+        </div>
+        <div class="card">
+          <img src="images/photo4.jpg" alt="作品4">
+          <div class="caption">作品标题 4｜拍摄地｜年份</div>
+        </div>
+        <div class="card">
+          <img src="images/photo5.jpg" alt="作品5">
+          <div class="caption">作品标题 5｜拍摄地｜年份</div>
+        </div>
+        <div class="card">
+          <img src="images/photo6.jpg" alt="作品6">
+          <div class="caption">作品标题 6｜拍摄地｜年份</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">联系 / 合作</h2>
+      <div class="contact">
+        <p>邮箱：<a href="mailto:your@email.com">your@email.com</a></p>
+        <p>Instagram：<a href="https://instagram.com/yourname" target="_blank">@yourname</a></p>
+        <p>小红书 / 微信公众号 / Behance（可选）</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 你的名字 · Powered by GitHub Pages
+  </footer>
+
+</body>
+</html>
