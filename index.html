@@ -3,378 +3,263 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xiang Li / 李响 | 摄影作品集</title>
-  <meta name="description" content="自然与微距摄影师，尊重生命。用影像记录旅行所看到的画面。">
+  <title>Xiang Li / 李响 | Photography</title>
+  <meta name="description" content="自然静态与野生动物摄影师。关注生态环境中的微小生命，也记录旅途所见。Lightroom 轻度修图。">
   <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background: #0b0b0b;
-      color: #eaeaea;
-      line-height: 1.6;
+    :root{
+      --paper:#f6f2ea;        /* 蛋壳白 */
+      --ink:#151515;
+      --muted:#6f6f6f;
+      --line:rgba(0,0,0,.10);
+      --shadow:0 14px 36px rgba(0,0,0,.10);
+      --shadow2:0 8px 22px rgba(0,0,0,.08);
+      --radius:16px;
     }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1160px, 92%);
-      margin: 0 auto;
-    }
-
-    /* 顶部区域 */
-    header {
-      position: relative;
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      color:var(--ink);
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.88)),
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 40%),
-        #111;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+        radial-gradient(circle at 18% 8%, rgba(0,0,0,.035), transparent 40%),
+        radial-gradient(circle at 82% 0%, rgba(0,0,0,.025), transparent 38%),
+        radial-gradient(circle at 50% 100%, rgba(0,0,0,.02), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.42)),
+        var(--paper);
+      line-height:1.6;
     }
+    a{color:inherit;text-decoration:none;}
+    .container{width:min(1120px,92%);margin:0 auto;}
 
-    .hero {
-      padding: 72px 0 60px;
+    /* 顶部名片区 */
+    header{
+      padding:30px 0 18px;
+      border-bottom:1px solid var(--line);
     }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(30px, 4.5vw, 52px);
-      line-height: 1.15;
-      letter-spacing: 0.5px;
-      color: #fff;
+    .cardline{
+      display:flex;gap:18px;align-items:flex-start;justify-content:space-between;
+      padding:18px 18px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,255,255,.55);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
-
-    .hero .subtitle {
-      margin: 16px 0 8px;
-      font-size: 15px;
-      color: #cfcfcf;
-      max-width: 760px;
-    }
-
-    .hero .subtitle-en {
-      margin: 0 0 22px;
-      font-size: 14px;
-      color: #9f9f9f;
-      max-width: 760px;
-    }
-
-    .hero .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .hero .links a {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.03);
-      color: #f1f1f1;
-      font-size: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .hero .links a:hover {
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-1px);
-    }
-
-    .hero-note {
-      margin-top: 18px;
-      font-size: 12px;
-      color: #8d8d8d;
-      letter-spacing: 0.2px;
-    }
-
-    /* 通用 section */
-    section {
-      padding: 38px 0;
-    }
-
-    .section-title {
-      margin: 0 0 14px;
-      font-size: 20px;
-      font-weight: 600;
-      color: #f4f4f4;
-      letter-spacing: 0.2px;
-    }
-
-    .panel {
-      background: #121212;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
-    }
-
-    .panel p {
-      margin: 0;
-      color: #cdcdcd;
-      font-size: 14px;
-    }
-
-    .tags {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #d8d8d8;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    /* 作品集网格 */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      display: block;
-      color: inherit;
-      background: #121212;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.24);
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.14);
-    }
-
-    .card img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      background: #232323;
-    }
-
-    .card .caption {
-      padding: 10px 12px 14px;
-      line-height: 1.4;
-    }
-
-    .card .caption .cn {
-      font-size: 14px;
-      color: #f0f0f0;
-      margin-bottom: 4px;
-    }
-
-    .card .caption .en {
-      font-size: 12px;
-      color: #989898;
-    }
-
-    /* 空白占位卡 */
-    .placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 240px;
+    /* 轻微“压纹/纸纹”效果 */
+    .cardline:before{
+      content:"";
+      position:absolute;inset:-40px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        #181818;
-      color: #6f6f6f;
-      font-size: 13px;
-      letter-spacing: 0.3px;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+        repeating-linear-gradient(135deg, rgba(0,0,0,.02) 0 2px, transparent 2px 10px);
+      opacity:.35;
+      pointer-events:none;
+      transform:rotate(-2deg);
+    }
+    .cardleft{position:relative;flex:1;min-width:260px;}
+    h1{
+      margin:0;
+      font-size:clamp(26px,3.8vw,44px);
+      font-weight:650;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+      max-width:760px;
+    }
+    .meta{
+      margin-top:12px;
+      display:flex;flex-wrap:wrap;gap:8px;
+    }
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.55);
+      font-size:13px;
+      color:#3a3a3a;
+    }
+    .cardright{
+      position:relative;
+      display:flex;flex-direction:column;gap:10px;
+      align-items:flex-end;
+      min-width:240px;
+    }
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.12);
+      background:rgba(255,255,255,.65);
+      box-shadow:var(--shadow2);
+      font-size:14px;
+      transition:.15s;
+    }
+    .btn:hover{transform:translateY(-1px);}
+    .small{
+      color:var(--muted);
+      font-size:13px;
+      text-align:right;
     }
 
-    /* 联系 */
-    .contact-list {
-      display: grid;
-      gap: 10px;
-      font-size: 14px;
-      color: #d0d0d0;
+    /* 作品集 */
+    main{padding:26px 0 50px;}
+    .section-title{
+      margin:0 0 14px;
+      font-size:18px;
+      color:#222;
+      letter-spacing:.2px;
     }
-
-    .contact-item {
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+      gap:14px;
     }
-
-    .contact-item a {
-      color: #f0f0f0;
-      word-break: break-all;
+    .work{
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      transition:.18s;
+      display:block;
     }
-
-    footer {
-      padding: 24px 0 42px;
-      color: #8c8c8c;
-      text-align: center;
-      font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 8px;
+    .work:hover{transform:translateY(-2px);}
+    .work img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+      display:block;
+      background:rgba(0,0,0,.08);
     }
+    .placeholder{
+      height:210px;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--muted);
+      background:rgba(0,0,0,.03);
+      font-size:14px;
+    }
+    .cap{
+      padding:10px 12px 12px;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    .cap .cn{font-size:14px;margin:0 0 4px;}
+    .cap .en{font-size:12px;color:var(--muted);margin:0;}
 
-    /* 手机优化 */
-    @media (max-width: 640px) {
-      .hero { padding: 54px 0 46px; }
-      .card img, .placeholder { height: 210px; }
-      .section-title { font-size: 18px; }
+    footer{
+      padding:18px 0 34px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
     }
   </style>
 </head>
+
 <body>
-
   <header>
-    <div class="container hero">
-      <h1>Xiang Li / 李响</h1>
+    <div class="container">
+      <div class="cardline">
+        <div class="cardleft">
+          <h1>Xiang Li / 李响</h1>
+          <div class="subtitle">
+            自然静态与野生动物摄影师，主要关注生态环境中的微小生命但不限于此，也拍摄除人像以外的其他内容。仅进行 Lightroom 轻度修图。<br>
+            Natural and wildlife photographer, focused on the small lives within ecosystems—yet not limited to them. I also photograph subjects beyond portraits, with gentle edits in Lightroom.
+          </div>
+          <div class="meta">
+            <span class="pill">Macro / 微距</span>
+            <span class="pill">Nature / 自然</span>
+            <span class="pill">Wildlife / 野生动物</span>
+            <span class="pill">Travel / 旅行记录</span>
+          </div>
+        </div>
 
-      <p class="subtitle">
-        自然与微距摄影师，尊重生命。<br>
-        用影像记录旅行所看到的画面。
-      </p>
-      <p class="subtitle-en">
-        Natural and macro photographer, guided by respect for life.<br>
-        I use photography to document the moments and scenes I encounter on my travels.
-      </p>
-
-      <div class="links">
-        <a href="#portfolio">查看作品 / Portfolio</a>
-        <a href="#about">关于我 / About</a>
-        <a href="#contact">联系合作 / Contact</a>
+        <div class="cardright">
+          <div class="btnrow">
+            <a class="btn" href="#portfolio">作品集 / Portfolio</a>
+            <a class="btn" href="mailto:xliphotographer@163.com">邮箱 / Email</a>
+          </div>
+          <div class="small">小红书 Red Book：2634222371</div>
+        </div>
       </div>
-
-      <div class="hero-note">Nature · Macro · Travel Documentation</div>
     </div>
   </header>
 
   <main class="container">
-    <!-- 关于我 -->
-    <section id="about">
-      <h2 class="section-title">关于我 / About</h2>
-      <div class="panel">
-        <p>
-          我是一名自然静态与野生动物摄影师，长期关注生态环境中的微小生命，也在旅行中持续记录自然与人间场景中那些安静而真实的片刻。我的拍摄并不局限于某一类题材——除人像外，我也拍摄风景、植物、城市公园与旅途中打动我的事物。
-          在后期处理上，我仅使用 Lightroom 进行轻度修图，尽量保留现场的光线、色彩与观看时的真实感受。
-        </p>
-        <div class="tags">
-          <span class="tag">自然静态 Nature Still-life</span>
-          <span class="tag">野生动物 Wildlife</span>
-          <span class="tag">微距 Macro</span>
-          <span class="tag">植物 Plants</span>
-          <span class="tag">旅行记录 Travel</span>
-          <span class="tag">Lightroom 轻修</span>
+    <h2 id="portfolio" class="section-title">作品集 / Portfolio</h2>
+
+    <div class="gallery">
+
+      <!-- 静处漫游 -->
+      <a class="work" href="quiet-places.html" aria-label="静处漫游">
+        <img src="images/images/Branches Amid Snow.jpg" alt="静处漫游">
+        <div class="cap">
+          <p class="cn">静处漫游</p>
+          <p class="en">A Walk Through Quiet Places</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- 作品集 -->
-    <section id="portfolio">
-      <h2 class="section-title">作品集 / Portfolio</h2>
-      <div class="gallery">
-
-        <!-- 作品1 -->
-        <a class="card" href="quiet-places.html" aria-label="静处漫游">
-          <img
-            src="images/images/Branches Amid Snow.jpg"
-            alt="静处漫游"
-          >
-          <div class="caption">
-            <div class="cn">静处漫游</div>
-            <div class="en">A Walk Through Quiet Places</div>
-          </div>
-        </a>
-
-        <!-- 作品2 -->
-        <a class="card" href="small-lives.html" aria-label="微末之生">
-          <img src="images/images/small-lives/small-01.jpg" alt="微末之生">
-          <div class="caption">
-            <div class="cn">微末之生</div>
-            <div class="en">Small Lives, Quiet Worlds</div>
-          </div>
-        </a>
-
-        <!-- 作品3 -->
-        <a class="card" href="road-encounters.html" aria-label="路遇生灵">
-          <img src="images/images/road-encounters/road-01.jpg" alt="路遇生灵">
-          <div class="caption">
-            <div class="cn">路遇生灵</div>
-            <div class="en">Creatures Along the Way</div>
-          </div>
-        </a>
-
-        <!-- 作品4 -->
-        <a class="card" href="scenes-along-the-way.html" aria-label="路上所见">
-          <img src="images/images/scenes/scene-01.jpg" alt="路上所见">
-          <div class="caption">
-            <div class="cn">路上所见</div>
-            <div class="en">Scenes Along the Way</div>
-          </div>
-        </a>
-
-        <!-- 作品5 -->
-        <a class="card" href="untitled.html" aria-label="未名">
-          <img src="images/images/untitled/untitled-01.jpg" alt="未名">
-          <div class="caption">
-            <div class="cn">未名</div>
-            <div class="en">Untitled</div>
-          </div>
-        </a>
-        
-        <!-- 作品6 -->
-        <a class="card" href="mobile-photography.html" aria-label="手机摄影">
-          <img src="images/images/mobile-photography/mobile-01.jpg" alt="手机摄影">
-          <div class="caption">
-            <div class="cn">手机摄影</div>
-            <div class="en">Mobile Photography</div>
-          </div>
-        </a>
-        
-        <!-- 作品7 -->
-        <a class="card" href="winged-animals.html" aria-label="有翼的动物">
-           <img src="images/images/winged-animals/wing-01.jpg" alt="有翼的动物">
-           <div class="caption">
-             <div class="cn">有翼的动物</div>
-             <div class="en">Winged Animals</div>
-           </div>
-         </a>
-      </div>
-    </section>
-
-    <!-- 联系 -->
-    <section id="contact">
-      <h2 class="section-title">联系 / 合作 · Contact</h2>
-      <div class="panel">
-        <div class="contact-list">
-          <div class="contact-item">
-            邮箱 Email：
-            <a href="mailto:xliphotographer@163.com">xliphotographer@163.com</a>
-          </div>
-          <div class="contact-item">
-            小红书 Red Book：2634222371
-          </div>
-          <div class="contact-item">
-            合作方向：投稿 / 展览 / 出版 / 图片授权
-          </div>
+      <!-- 微末之生 -->
+      <a class="work" href="small-lives.html" aria-label="微末之生">
+        <img src="images/images/small-lives/small-01.jpg" alt="微末之生">
+        <div class="cap">
+          <p class="cn">微末之生</p>
+          <p class="en">Small Lives, Quiet Worlds</p>
         </div>
-      </div>
-    </section>
+      </a>
+
+      <!-- 路遇生灵 -->
+      <a class="work" href="road-encounters.html" aria-label="路遇生灵">
+        <img src="images/images/road-encounters/road-01.jpg" alt="路遇生灵">
+        <div class="cap">
+          <p class="cn">路遇生灵</p>
+          <p class="en">Creatures Along the Way</p>
+        </div>
+      </a>
+
+      <!-- 手机摄影 -->
+      <a class="work" href="mobile-photography.html" aria-label="手机摄影">
+        <img src="images/images/mobile-photography/mobile-01.jpg" alt="手机摄影">
+        <div class="cap">
+          <p class="cn">手机摄影</p>
+          <p class="en">Mobile Photography</p>
+        </div>
+      </a>
+
+      <!-- 有翼的动物 -->
+      <a class="work" href="winged-animals.html" aria-label="有翼的动物">
+        <img src="images/images/winged-animals/wing-01.jpg" alt="有翼的动物">
+        <div class="cap">
+          <p class="cn">有翼的动物</p>
+          <p class="en">Winged Animals</p>
+        </div>
+      </a>
+
+      <!-- 路上所见 -->
+      <a class="work" href="scenes-along-the-way.html" aria-label="路上所见">
+        <img src="images/images/scenes/scene-01.jpg" alt="路上所见">
+        <div class="cap">
+          <p class="cn">路上所见</p>
+          <p class="en">Scenes Along the Way</p>
+        </div>
+      </a>
+
+      <!-- 未名 -->
+      <a class="work" href="untitled.html" aria-label="未名">
+        <img src="images/images/untitled/untitled-01.jpg" alt="未名">
+        <div class="cap">
+          <p class="cn">未名</p>
+          <p class="en">Untitled</p>
+        </div>
+      </a>
+
+    </div>
   </main>
 
-  <footer>
-    © 2026 Xiang Li / 李响 · Powered by GitHub Pages
-  </footer>
-
+  <footer>© 2026 Xiang Li / 李响 · Powered by GitHub Pages</footer>
 </body>
 </html>
