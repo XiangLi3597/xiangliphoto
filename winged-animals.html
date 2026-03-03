@@ -1,5 +1,29 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>有翼的动物 | Winged Animals</title>
 <style>
+h1,h2{letter-spacing:var(--ls-title);font-weight:650}
+
+.series-nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 0;
+}
+
+.navbtn{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  font-size:14px;
+  color:var(--muted);
+  transition:.15s;
+}
+
+.navbtn:hover{transform:translateY(-1px)}
 :root{
   --paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);
   --shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;
