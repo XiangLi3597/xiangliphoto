@@ -1,8 +1,28 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>有翼的动物 | Winged Animals</title>
 <style>
-:root{--paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);--shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px}
+:root{
+  --paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);
+  --shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;
+
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --lh:1.65;
+  --ls-title:.2px;
+  --ls-body:.1px;
+}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
+  radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
+  linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)), var(--paper);
+  line-height:var(--lh);
+
+  letter-spacing:var(--ls-body);
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 background:radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
 radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
 linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)), var(--paper);line-height:1.6}
