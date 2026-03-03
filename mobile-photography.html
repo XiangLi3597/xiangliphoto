@@ -41,6 +41,30 @@ background:rgba(255,255,255,.6);box-shadow:var(--shadow)}
 .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,.9);z-index:9999}
 .lightbox.show{display:flex}.lightbox img{max-width:min(1400px,96vw);max-height:88vh;border-radius:12px}
 .close{position:absolute;top:14px;right:16px;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;cursor:pointer}
+h1,h2{letter-spacing:var(--ls-title);font-weight:650}
+
+.series-nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 0;
+}
+
+.navbtn{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  font-size:14px;
+  color:var(--muted);
+  transition:.15s;
+}
+
+.navbtn:hover{transform:translateY(-1px)}
 </style>
 </head>
 <body>
