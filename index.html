@@ -91,7 +91,7 @@
     .btnrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 12px;
+      padding:11px 14px;
       border-radius:12px;
       border:1px solid rgba(0,0,0,.12);
       background:rgba(255,255,255,.65);
@@ -157,6 +157,38 @@
       font-size:13px;
       text-align:center;
     }
+
+    /* ===== 手机端优化 ===== */
+
+    /* 名片区改为上下布局，按钮靠左，更好读 */
+    @media (max-width:700px){
+      header{padding:22px 0 14px;}
+      .cardline{flex-direction:column;gap:16px;padding:16px 14px;}
+      .cardleft{min-width:auto;}
+      .cardright{min-width:auto;align-items:flex-start;}
+      .btnrow{justify-content:flex-start;}
+      .small{text-align:left;}
+      .subtitle{font-size:13px;}
+      .pill{font-size:12px;padding:5px 9px;}
+    }
+
+    /* 作品集手机两列 + 封面高度更适合 */
+    @media (max-width:600px){
+      .gallery{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+      .work img{height:150px;}
+      .cap{padding:8px 10px 10px;}
+      .cap .cn{font-size:13px;}
+      .cap .en{font-size:11px;}
+    }
+
+    /* 更小屏幕：改回一列，避免太挤 */
+    @media (max-width:360px){
+      .gallery{grid-template-columns:1fr;}
+      .work img{height:170px;}
+    }
   </style>
 </head>
 
@@ -195,17 +227,17 @@
     <div class="gallery">
 
       <!-- 静处漫游 -->
-<a class="work" href="quiet-places.html" aria-label="静处漫游">
-  <img src="quiet-places/quiet-01.jpg" alt="静处漫游">
-  <div class="cap">
-    <p class="cn">静处漫游</p>
-    <p class="en">A Walk Through Quiet Places</p>
-  </div>
-</a>
+      <a class="work" href="quiet-places.html" aria-label="静处漫游">
+        <img src="quiet-places/quiet-01.jpg" alt="静处漫游" loading="lazy">
+        <div class="cap">
+          <p class="cn">静处漫游</p>
+          <p class="en">A Walk Through Quiet Places</p>
+        </div>
+      </a>
 
       <!-- 微末之生 -->
       <a class="work" href="small-lives.html" aria-label="微末之生">
-        <img src="images/images/small-lives/small-01.jpg" alt="微末之生">
+        <img src="images/images/small-lives/small-01.jpg" alt="微末之生" loading="lazy">
         <div class="cap">
           <p class="cn">微末之生</p>
           <p class="en">Small Lives, Quiet Worlds</p>
@@ -214,7 +246,7 @@
 
       <!-- 路遇生灵 -->
       <a class="work" href="road-encounters.html" aria-label="路遇生灵">
-        <img src="images/images/road-encounters/road-01.jpg" alt="路遇生灵">
+        <img src="images/images/road-encounters/road-01.jpg" alt="路遇生灵" loading="lazy">
         <div class="cap">
           <p class="cn">路遇生灵</p>
           <p class="en">Creatures Along the Way</p>
@@ -223,7 +255,7 @@
 
       <!-- 手机摄影 -->
       <a class="work" href="mobile-photography.html" aria-label="手机摄影">
-        <img src="images/images/mobile-photography/mobile-01.jpg" alt="手机摄影">
+        <img src="images/images/mobile-photography/mobile-01.jpg" alt="手机摄影" loading="lazy">
         <div class="cap">
           <p class="cn">手机摄影</p>
           <p class="en">Mobile Photography</p>
@@ -232,7 +264,7 @@
 
       <!-- 有翼的动物 -->
       <a class="work" href="winged-animals.html" aria-label="有翼的动物">
-        <img src="images/images/winged-animals/wing-01.jpg" alt="有翼的动物">
+        <img src="images/images/winged-animals/wing-01.jpg" alt="有翼的动物" loading="lazy">
         <div class="cap">
           <p class="cn">有翼的动物</p>
           <p class="en">Winged Animals</p>
@@ -241,7 +273,7 @@
 
       <!-- 路上所见 -->
       <a class="work" href="scenes-along-the-way.html" aria-label="路上所见">
-        <img src="images/images/scenes/scene-01.jpg" alt="路上所见">
+        <img src="images/images/scenes/scene-01.jpg" alt="路上所见" loading="lazy">
         <div class="cap">
           <p class="cn">路上所见</p>
           <p class="en">Scenes Along the Way</p>
@@ -250,7 +282,7 @@
 
       <!-- 未名 -->
       <a class="work" href="untitled.html" aria-label="未名">
-        <img src="images/images/untitled/untitled-01.jpg" alt="未名">
+        <img src="images/images/untitled/untitled-01.jpg" alt="未名" loading="lazy">
         <div class="cap">
           <p class="cn">未名</p>
           <p class="en">Untitled</p>
