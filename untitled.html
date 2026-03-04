@@ -1,61 +1,187 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>未名 | Untitled</title>
+<meta name="description" content="未名：开放合集，可能包含人像或街拍。">
+
 <style>
 :root{
-  --paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);
-  --shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;
+  --paper:#f6f2ea;
+  --ink:#151515;
+  --muted:#6f6f6f;
+  --line:rgba(0,0,0,.08);
+  --shadow:0 10px 28px rgba(0,0,0,.08);
+  --radius:14px;
 
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  --lh:1.65;--ls-title:.2px;--ls-body:.1px;
+  --lh:1.65;
+  --ls-title:.2px;
+  --ls-body:.1px;
 }
-*{box-sizing:border-box}html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 body{
-  font-family:var(--font);color:var(--ink);
-  background:radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
-  radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
-  linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)), var(--paper);
+  font-family:var(--font);
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
+    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)),
+    var(--paper);
   line-height:var(--lh);
   letter-spacing:var(--ls-body);
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,92%);margin:0 auto;padding-bottom:40px}
-header{padding:18px 0 10px;border-bottom:1px solid var(--line)}
-.topbar{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
-.back{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55)}
 
-h1,h2{letter-spacing:var(--ls-title);font-weight:650}
-.series-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:12px 0 0}
-.navbtn{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);
-  box-shadow:0 6px 18px rgba(0,0,0,.06);font-size:14px;color:var(--muted);transition:.15s;text-decoration:none}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:0 auto}
+
+header{padding:18px 0 10px;border-bottom:1px solid var(--line)}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:14px;
+  color:var(--muted);
+}
+.back{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.back:hover{transform:translateY(-1px)}
+
+h1,h2{letter-spacing:var(--ls-title);font-weight:650;margin:0}
+
+.series-nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 0;
+}
+.navbtn{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  font-size:14px;
+  color:var(--muted);
+  transition:.15s;
+  text-decoration:none;
+}
 .navbtn:hover{transform:translateY(-1px)}
 
-.titlewrap{padding:18px 0 6px}
-h1{margin:0;font-size:clamp(28px,4vw,44px);font-weight:650}
-.en{margin-top:6px;color:var(--muted);font-size:13px}
-main{padding:18px 0 44px}
-.masonry{column-count:3;column-gap:18px}@media(max-width:980px){.masonry{column-count:2}}@media(max-width:560px){.masonry{column-count:1}}
-.item{break-inside:avoid;margin:0 0 18px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.6);box-shadow:var(--shadow)}
-.item img{width:100%;height:auto;display:block;cursor:zoom-in}
-footer{padding:18px 0 32px;text-align:center;color:var(--muted);border-top:1px solid var(--line);font-size:13px}
-.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,.9);z-index:9999;padding:24px}
-.lightbox.show{display:flex}.lightbox img{max-width:min(1400px,96vw);max-height:88vh;border-radius:12px}
-.close{position:absolute;top:14px;right:16px;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;cursor:pointer}
+.hero{padding:20px 0 26px}
+.sub{margin:8px 0 12px;color:var(--muted);font-size:14px}
+.desc{margin:0;max-width:860px;color:#3a3a3a;font-size:14px}
+
+main{padding:22px 0 44px}
+.masonry{column-count:3;column-gap:18px}
+@media (max-width:980px){.masonry{column-count:2}}
+@media (max-width:560px){.masonry{column-count:1}}
+
+.item{
+  break-inside:avoid;
+  margin:0 0 18px;
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.item img{
+  width:100%;
+  height:auto;
+  display:block;
+  cursor:zoom-in;
+}
+.cap{
+  padding:10px 12px 12px;
+  border-top:1px solid rgba(0,0,0,.06);
+}
+.cap .cn{font-size:14px;margin:0}
+
+footer{
+  padding:18px 0 34px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;
+  background:rgba(10,10,10,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:9999;
+  touch-action:pan-y;
+}
+.lightbox.show{display:flex}
+.lightbox img{
+  max-width:min(1600px,96vw);
+  max-height:88vh;
+  border-radius:12px;
+  background:#111;
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+}
+.close{
+  position:absolute;top:14px;right:16px;
+  width:40px;height:40px;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:24px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+  user-select:none;
+}
+.close:hover{background:rgba(255,255,255,.14)}
+
+/* desktop arrows */
+.lbnav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:54px;height:54px;
+  border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+  user-select:none;
+}
+.lbnav:hover{background:rgba(255,255,255,.18)}
+.lbprev{left:18px}
+.lbnext{right:18px}
+@media (max-width:700px){
+  .lbnav{display:none;}
+}
 </style>
 </head>
 
 <body>
-<div class="container">
-  <header>
+<header>
+  <div class="container">
     <div class="topbar">
       <a class="back" href="index.html">← 返回首页</a>
-      <div></div>
+      <div>Series — Untitled</div>
     </div>
 
     <div class="series-nav">
@@ -64,57 +190,103 @@ footer{padding:18px 0 32px;text-align:center;color:var(--muted);border-top:1px s
       <a class="navbtn" href="quiet-places.html">下一系列 →</a>
     </div>
 
-    <div class="titlewrap">
+    <div class="hero">
       <h1>未名</h1>
-      <div class="en">Untitled</div>
+      <div class="sub">Untitled</div>
+      <p class="desc">开放合集：不限定题材，未来可能加入人像或街拍。</p>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <div id="grid" class="masonry"></div>
-  </main>
+<main class="container">
+  <div id="masonry" class="masonry"></div>
+</main>
 
-  <footer>© 2026 Xiang Li / 李响</footer>
-</div>
+<footer>© 2026 Xiang Li / 李响 · Untitled</footer>
 
+<!-- Lightbox -->
 <div id="lightbox" class="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
   <div class="close" onclick="closeLightbox()">×</div>
+  <div class="lbnav lbprev" onclick="prevImage(event)">‹</div>
   <img id="lbImg" src="" alt="">
+  <div class="lbnav lbnext" onclick="nextImage(event)">›</div>
 </div>
 
 <script>
-const TOTAL = 12;
-const folder = "images/images/untitled/";
-const grid = document.getElementById("grid");
-function pad2(n){ return String(n).padStart(2, "0"); }
-for(let i=1; i<=TOTAL; i++){
-  const num = pad2(i);
-  const src = folder + "untitled-" + num + ".jpg";
+/* ====== 你只需要改这里的数字 ====== */
+const TOTAL = 12; // 未来加照片：把 12 改成 20，并上传 untitled-13.jpg ~ untitled-20.jpg
+const BASE = "images/images/untitled/";
+const PREFIX = "untitled-";  // 文件名：untitled-01.jpg
+const EXT = ".jpg";
+/* ================================= */
+
+const masonry = document.getElementById("masonry");
+const imgs = [];
+
+function pad2(n){ return String(n).padStart(2,"0"); }
+
+for(let i=1;i<=TOTAL;i++){
+  const src = `${BASE}${PREFIX}${pad2(i)}${EXT}`;
+  imgs.push(src);
+
   const item = document.createElement("div");
   item.className = "item";
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = "Untitled";
-  img.loading = "lazy";
-  img.onclick = () => openLightbox(src, "Untitled");
-  item.appendChild(img);
-  grid.appendChild(item);
+  item.innerHTML = `
+    <img src="${src}" alt="未名" loading="lazy">
+    <div class="cap"><p class="cn"></p></div>
+  `;
+  item.querySelector("img").addEventListener("click", ()=> openLightbox(i-1));
+  masonry.appendChild(item);
 }
-function openLightbox(src, alt){
-  const box = document.getElementById("lightbox");
-  const img = document.getElementById("lbImg");
-  img.src = src; img.alt = alt || "";
+
+let current = 0;
+const box = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+
+function openLightbox(idx){
+  current = idx;
+  lbImg.src = imgs[current];
   box.classList.add("show");
   document.body.style.overflow = "hidden";
 }
 function closeLightbox(){
-  const box = document.getElementById("lightbox");
-  const img = document.getElementById("lbImg");
   box.classList.remove("show");
-  img.src = "";
+  lbImg.src = "";
   document.body.style.overflow = "";
 }
-document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeLightbox(); });
+function prevImage(e){
+  if(e) e.stopPropagation();
+  current = (current - 1 + imgs.length) % imgs.length;
+  lbImg.src = imgs[current];
+}
+function nextImage(e){
+  if(e) e.stopPropagation();
+  current = (current + 1) % imgs.length;
+  lbImg.src = imgs[current];
+}
+
+/* keyboard */
+document.addEventListener("keydown",(e)=>{
+  if(!box.classList.contains("show")) return;
+  if(e.key==="Escape") closeLightbox();
+  if(e.key==="ArrowLeft") prevImage();
+  if(e.key==="ArrowRight") nextImage();
+});
+
+/* mobile swipe */
+let startX = 0;
+box.addEventListener("touchstart",(e)=>{
+  startX = e.touches[0].clientX;
+},{passive:true});
+
+box.addEventListener("touchend",(e)=>{
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - startX;
+  if(Math.abs(dx) < 60) return;
+  if(dx > 0) prevImage();
+  else nextImage();
+},{passive:true});
 </script>
+
 </body>
 </html>
