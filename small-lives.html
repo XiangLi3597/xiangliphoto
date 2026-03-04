@@ -1,82 +1,284 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>微末之生 | Small Lives, Quiet Worlds</title>
-<meta name="description" content="微末之生：昆虫与微小生命系列。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>末微之声 | Small Lives, Quiet Worlds</title>
+
 <style>
-:root{
-  --paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);
-  --shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;
 
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  --lh:1.65;--ls-title:.2px;--ls-body:.1px;
-}
-*{box-sizing:border-box}html,body{margin:0;padding:0}
 body{
-  font-family:var(--font);color:var(--ink);
-  background:radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
-  radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
-  linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)), var(--paper);
-  line-height:var(--lh);
-  letter-spacing:var(--ls-body);
-  text-rendering:optimizeLegibility;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+margin:0;
+background:#f6f2ea;
+color:#151515;
 }
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,92%);margin:0 auto;padding-bottom:40px}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);color:var(--muted)}
-.back{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55)}
 
-h1,h2{letter-spacing:var(--ls-title);font-weight:650}
-.series-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:12px 0 0}
-.navbtn{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);
-  box-shadow:0 6px 18px rgba(0,0,0,.06);font-size:14px;color:var(--muted);transition:.15s;text-decoration:none}
-.navbtn:hover{transform:translateY(-1px)}
+.container{
+width:min(1100px,92%);
+margin:auto;
+}
 
-.hero{padding:20px 0}h1{margin:0;font-size:clamp(28px,4vw,42px)}.sub{color:var(--muted);margin-top:8px}
-.masonry{column-count:3;column-gap:18px;margin-top:22px}@media(max-width:980px){.masonry{column-count:2}}@media(max-width:560px){.masonry{column-count:1}}
-.item{break-inside:avoid;margin:0 0 18px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
-background:rgba(255,255,255,.6);box-shadow:var(--shadow)}
-.item img{width:100%;height:auto;display:block;cursor:zoom-in}
-.cap{padding:10px 12px;border-top:1px solid rgba(0,0,0,.06)}.cap .cn{margin:0;font-size:14px}.cap .en{margin:0;font-size:12px;color:var(--muted)}
-.footer{padding:18px 0 32px;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
-.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,.9);z-index:9999}
-.lightbox.show{display:flex}.lightbox img{max-width:min(1400px,96vw);max-height:88vh;border-radius:12px}
-.close{position:absolute;top:14px;right:16px;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;cursor:pointer}
+header{
+padding:20px 0;
+border-bottom:1px solid rgba(0,0,0,.1);
+}
+
+.series-nav{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+}
+
+.navbtn{
+padding:8px 12px;
+border-radius:999px;
+border:1px solid rgba(0,0,0,.15);
+background:white;
+text-decoration:none;
+font-size:14px;
+}
+
+.hero{
+padding:10px 0 20px;
+}
+
+.masonry{
+column-count:3;
+column-gap:16px;
+}
+
+@media(max-width:900px){
+.masonry{column-count:2;}
+}
+
+@media(max-width:600px){
+.masonry{column-count:1;}
+}
+
+.item{
+break-inside:avoid;
+margin-bottom:16px;
+background:white;
+border-radius:12px;
+overflow:hidden;
+}
+
+.item img{
+width:100%;
+display:block;
+cursor:pointer;
+}
+
+.cap{
+padding:10px;
+font-size:13px;
+color:#666;
+}
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.lightbox.show{
+display:flex;
+}
+
+.lightbox img{
+max-width:95vw;
+max-height:90vh;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+.nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:42px;
+color:white;
+background:rgba(0,0,0,0.35);
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.prev{left:20px;border-radius:30px;}
+.next{right:20px;border-radius:30px;}
+
+@media(max-width:700px){
+.nav{display:none;}
+}
+
 </style>
 </head>
+
+
 <body>
-<div class="container">
-  <div class="topbar"><a class="back" href="index.html">← 返回首页</a><div>Series — Small Lives</div></div>
 
-  <div class="series-nav">
-    <a class="navbtn" href="quiet-places.html">← 上一系列</a>
-    <a class="navbtn" href="index.html">返回首页</a>
-    <a class="navbtn" href="road-encounters.html">下一系列 →</a>
-  </div>
+<header class="container">
 
-  <div class="hero"><h1>微末之生</h1><div class="sub">Small Lives, Quiet Worlds</div><p class="desc">昆虫与微小生命：在近距离里看见秩序、纹理与呼吸。</p></div>
+<div class="series-nav">
 
-  <main><div class="masonry">
-    <div class="item"><img src="images/images/small-lives/small-01.jpg" alt="微末之生 01" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 01</p><p class="en">Small Lives 01</p></div></div>
-    <div class="item"><img src="images/images/small-lives/small-02.jpg" alt="微末之生 02" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 02</p><p class="en">Small Lives 02</p></div></div>
-    <div class="item"><img src="images/images/small-lives/small-03.jpg" alt="微末之生 03" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 03</p><p class="en">Small Lives 03</p></div></div>
-    <div class="item"><img src="images/images/small-lives/small-04.jpg" alt="微末之生 04" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 04</p><p class="en">Small Lives 04</p></div></div>
-    <div class="item"><img src="images/images/small-lives/small-05.jpg" alt="微末之生 05" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 05</p><p class="en">Small Lives 05</p></div></div>
-    <div class="item"><img src="images/images/small-lives/small-06.jpg" alt="微末之生 06" onclick="openLightbox(this.src,this.alt)"><div class="cap"><p class="cn">微末之生 06</p><p class="en">Small Lives 06</p></div></div>
-  </div></main>
+<a class="navbtn" href="quiet-places.html">← 上一系列</a>
 
-  <div class="footer">© 2026 Xiang Li / 李响 · Small Lives</div>
+<a class="navbtn" href="index.html">返回首页</a>
+
+<a class="navbtn" href="road-encounters.html">下一系列 →</a>
+
 </div>
 
-<div id="lightbox" class="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
-  <div class="close" onclick="closeLightbox()">×</div><img id="lbImg" src="" alt="">
+<div class="hero">
+
+<h1>末微之声</h1>
+
+<div>Small Lives, Quiet Worlds</div>
+
 </div>
+
+</header>
+
+
+
+<main class="container">
+
+<div class="masonry">
+
+<!-- 图片开始 -->
+
+<div class="item">
+<img src="small-01.jpg" onclick="openLightbox(this.src,0)">
+<div class="cap">01</div>
+</div>
+
+<div class="item">
+<img src="small-02.jpg" onclick="openLightbox(this.src,1)">
+<div class="cap">02</div>
+</div>
+
+<div class="item">
+<img src="small-03.jpg" onclick="openLightbox(this.src,2)">
+<div class="cap">03</div>
+</div>
+
+<div class="item">
+<img src="small-04.jpg" onclick="openLightbox(this.src,3)">
+<div class="cap">04</div>
+</div>
+
+<div class="item">
+<img src="small-05.jpg" onclick="openLightbox(this.src,4)">
+<div class="cap">05</div>
+</div>
+
+<div class="item">
+<img src="small-06.jpg" onclick="openLightbox(this.src,5)">
+<div class="cap">06</div>
+</div>
+
+<!-- 图片结束 -->
+
+</div>
+</main>
+
+
+
+<div id="lightbox" class="lightbox">
+
+<div class="close" onclick="closeLightbox()">×</div>
+
+<div class="nav prev" onclick="prevImage()">‹</div>
+
+<img id="viewer">
+
+<div class="nav next" onclick="nextImage()">›</div>
+
+</div>
+
+
+
 <script>
-function openLightbox(s,a){const b=document.getElementById('lightbox'),i=document.getElementById('lbImg');i.src=s;i.alt=a||'';b.classList.add('show');document.body.style.overflow='hidden'}
-function closeLightbox(){const b=document.getElementById('lightbox'),i=document.getElementById('lbImg');b.classList.remove('show');i.src='';document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()})
+
+let images=[]
+let index=0
+
+function openLightbox(src,i){
+
+images=[...document.querySelectorAll(".item img")]
+
+index=i
+
+document.getElementById("viewer").src=src
+
+document.getElementById("lightbox").classList.add("show")
+
+}
+
+function closeLightbox(){
+
+document.getElementById("lightbox").classList.remove("show")
+
+}
+
+function prevImage(){
+
+index=(index-1+images.length)%images.length
+
+document.getElementById("viewer").src=images[index].src
+
+}
+
+function nextImage(){
+
+index=(index+1)%images.length
+
+document.getElementById("viewer").src=images[index].src
+
+}
+
+let startX=0
+
+document.getElementById("lightbox").addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX
+})
+
+document.getElementById("lightbox").addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX
+
+if(startX-endX>60)nextImage()
+
+if(endX-startX>60)prevImage()
+
+})
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="ArrowRight")nextImage()
+
+if(e.key==="ArrowLeft")prevImage()
+
+if(e.key==="Escape")closeLightbox()
+
+})
+
 </script>
-</body></html>
+
+</body>
+</html>
