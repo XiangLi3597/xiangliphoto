@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>微末之生 | Small Lives, Quiet Worlds</title>
   <meta name="description" content="微末之生：昆虫与微小生命摄影系列。">
+  h1,h2{letter-spacing:var(--ls-title);font-weight:650}
+
+.series-nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 0;
+}
+
+.navbtn{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  font-size:14px;
+  color:var(--muted);
+  transition:.15s;
+  text-decoration:none; /* 保险：彻底取消下划线 */
+}
+
+.navbtn:hover{transform:translateY(-1px)}
   <style>
     :root{--paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);--shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;}
     *{box-sizing:border-box;} html,body{margin:0;padding:0;}
