@@ -2,161 +2,81 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>静处漫游 | A Walk Through Quiet Places</title>
-  <meta name="description" content="静处漫游：城市公园/景观系列。">
-  h1,h2{letter-spacing:var(--ls-title);font-weight:650}
-
-.series-nav{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  margin:12px 0 0;
-}
-
-.navbtn{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.55);
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
-  font-size:14px;
-  color:var(--muted);
-  transition:.15s;
-  text-decoration:none; /* 保险：彻底取消下划线 */
-}
-
-.navbtn:hover{transform:translateY(-1px)}
+  <meta name="description" content="静处漫游：城市公园/无人景观系列。">
   <style>
     :root{
-      --paper:#f6f2ea;          /* 蛋壳白 */
-      --ink:#151515;
-      --muted:#6f6f6f;
-      --line:rgba(0,0,0,.08);
-      --shadow:0 10px 28px rgba(0,0,0,.08);
-      --radius:14px;
+      --paper:#f6f2ea;--ink:#151515;--muted:#6f6f6f;--line:rgba(0,0,0,.08);
+      --shadow:0 10px 28px rgba(0,0,0,.08);--radius:14px;
+
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      --lh:1.65;--ls-title:.2px;--ls-body:.1px;
     }
-    *{box-sizing:border-box;}
-    html,body{margin:0;padding:0;}
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
     body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
-        radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)),
-        var(--paper);
-      line-height:1.6;
+      font-family:var(--font);color:var(--ink);
+      background:radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
+      radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
+      linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)), var(--paper);
+      line-height:var(--lh);
+      letter-spacing:var(--ls-body);
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    a{color:inherit;text-decoration:none;}
-    .container{width:min(1120px,92%);margin:0 auto;}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+    header{padding:18px 0 10px;border-bottom:1px solid var(--line)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+    .back{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .back:hover{transform:translateY(-1px)}
 
-    header{
-      padding:18px 0 10px;
-      border-bottom:1px solid var(--line);
-      backdrop-filter:saturate(1.1);
-    }
-    .topbar{
-      <div class="series-nav">
-       <a class="navbtn" href="untitled.html">← 上一系列</a>
-       <a class="navbtn" href="index.html">返回首页</a>
-       <a class="navbtn" href="small-lives.html">下一系列 →</a>
-      </div>
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      font-size:14px;color:var(--muted);
-    }
-    .back{
-      display:inline-block;
-      padding:8px 12px;border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.55);
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
-    }
-    .back:hover{transform:translateY(-1px);}
+    h1,h2{letter-spacing:var(--ls-title);font-weight:650}
+    .series-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:12px 0 0}
+    .navbtn{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);
+      box-shadow:0 6px 18px rgba(0,0,0,.06);font-size:14px;color:var(--muted);transition:.15s;text-decoration:none}
+    .navbtn:hover{transform:translateY(-1px)}
 
-    .hero{padding:20px 0 26px;}
-    h1{margin:0;font-size:clamp(28px,4vw,44px);font-weight:600;letter-spacing:.2px;}
-    .sub{margin:8px 0 12px;color:var(--muted);font-size:14px;}
-    .desc{margin:0;max-width:860px;color:#3a3a3a;font-size:14px;}
+    .hero{padding:20px 0 26px}
+    .sub{margin:8px 0 12px;color:var(--muted);font-size:14px}
+    .desc{margin:0;max-width:860px;color:#3a3a3a;font-size:14px}
 
-    main{padding:22px 0 44px;}
+    main{padding:22px 0 44px}
+    .masonry{column-count:3;column-gap:18px}
+    @media (max-width:980px){.masonry{column-count:2}}
+    @media (max-width:560px){.masonry{column-count:1}}
+    .item{break-inside:avoid;margin:0 0 18px;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .item img{width:100%;height:auto;display:block;cursor:zoom-in}
+    .cap{padding:10px 12px 12px;border-top:1px solid rgba(0,0,0,.06)}
+    .cap .cn{font-size:14px;margin:0 0 4px}
+    .cap .en{font-size:12px;color:var(--muted);margin:0}
 
-    /* 瀑布流：横竖图自然比例，不会“横竖混排难看” */
-    .masonry{
-      column-count:3;
-      column-gap:18px;
-    }
-    @media (max-width: 980px){ .masonry{column-count:2;} }
-    @media (max-width: 560px){ .masonry{column-count:1;} }
+    footer{padding:18px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
 
-    .item{
-      break-inside:avoid;
-      margin:0 0 18px;
-      background:rgba(255,255,255,.55);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-    .item img{
-      width:100%;
-      height:auto;
-      display:block;
-      cursor:zoom-in;
-    }
-    .cap{
-      padding:10px 12px 12px;
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-    .cap .cn{font-size:14px;margin:0 0 4px;}
-    .cap .en{font-size:12px;color:var(--muted);margin:0;}
-
-    footer{
-      padding:18px 0 34px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-    }
-
-    /* Lightbox */
-    .lightbox{
-      position:fixed;inset:0;
-      background:rgba(10,10,10,.9);
-      display:none;align-items:center;justify-content:center;
-      padding:24px;z-index:9999;
-    }
-    .lightbox.show{display:flex;}
-    .lightbox img{
-      max-width:min(1400px,96vw);
-      max-height:88vh;
-      border-radius:12px;
-      background:#111;
-      box-shadow:0 18px 50px rgba(0,0,0,.35);
-    }
-    .close{
-      position:absolute;top:14px;right:16px;
-      width:40px;height:40px;border-radius:999px;
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;font-size:24px;cursor:pointer;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.08);
-      user-select:none;
-    }
-    .close:hover{background:rgba(255,255,255,.14);}
+    .lightbox{position:fixed;inset:0;background:rgba(10,10,10,.9);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+    .lightbox.show{display:flex}
+    .lightbox img{max-width:min(1400px,96vw);max-height:88vh;border-radius:12px;background:#111;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    .close{position:absolute;top:14px;right:16px;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:24px;cursor:pointer;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);user-select:none}
+    .close:hover{background:rgba(255,255,255,.14)}
   </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="container">
     <div class="topbar">
-      <a class="back" href="index.html">← 返回首页 / Back to Home</a>
+      <a class="back" href="index.html">← 返回首页</a>
       <div>Series 01</div>
     </div>
+
+    <div class="series-nav">
+      <a class="navbtn" href="untitled.html">← 上一系列</a>
+      <a class="navbtn" href="index.html">返回首页</a>
+      <a class="navbtn" href="small-lives.html">下一系列 →</a>
+    </div>
+
     <div class="hero">
       <h1>静处漫游</h1>
       <div class="sub">A Walk Through Quiet Places</div>
@@ -170,56 +90,38 @@
 
     <div class="item">
       <img src="images/images/Branches Amid Snow.jpg" alt="静处漫游 01" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 01</p>
-        <p class="en">A Walk Through Quiet Places 01</p>
-      </div>
+      <div class="cap"><p class="cn">静处漫游 01</p><p class="en">A Walk Through Quiet Places 01</p></div>
     </div>
 
     <div class="item">
-      <img src="quiet-places/quiet-02.jpg" alt="静处漫游 02" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 02</p>
-        <p class="en">A Walk Through Quiet Places 02</p>
-      </div>
+      <img src="images/quiet-places/quiet-02.jpg" alt="静处漫游 02" onclick="openLightbox(this.src,this.alt)">
+      <div class="cap"><p class="cn">静处漫游 02</p><p class="en">A Walk Through Quiet Places 02</p></div>
     </div>
 
     <div class="item">
-      <img src="quiet-places/quiet-03.jpg" alt="静处漫游 03" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 03</p>
-        <p class="en">A Walk Through Quiet Places 03</p>
-      </div>
+      <img src="images/quiet-places/quiet-03.jpg" alt="静处漫游 03" onclick="openLightbox(this.src,this.alt)">
+      <div class="cap"><p class="cn">静处漫游 03</p><p class="en">A Walk Through Quiet Places 03</p></div>
     </div>
 
     <div class="item">
-      <img src="quiet-places/quiet-04.jpg" alt="静处漫游 04" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 04</p>
-        <p class="en">A Walk Through Quiet Places 04</p>
-      </div>
+      <img src="images/quiet-places/quiet-04.jpg" alt="静处漫游 04" onclick="openLightbox(this.src,this.alt)">
+      <div class="cap"><p class="cn">静处漫游 04</p><p class="en">A Walk Through Quiet Places 04</p></div>
     </div>
 
     <div class="item">
-      <img src="quiet-places/quiet-05.jpg" alt="静处漫游 05" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 05</p>
-        <p class="en">A Walk Through Quiet Places 05</p>
-      </div>
+      <img src="images/quiet-places/quiet-05.jpg" alt="静处漫游 05" onclick="openLightbox(this.src,this.alt)">
+      <div class="cap"><p class="cn">静处漫游 05</p><p class="en">A Walk Through Quiet Places 05</p></div>
     </div>
 
     <div class="item">
-      <img src="quiet-places/quiet-06.jpg" alt="静处漫游 06" onclick="openLightbox(this.src,this.alt)">
-      <div class="cap">
-        <p class="cn">静处漫游 06</p>
-        <p class="en">A Walk Through Quiet Places 06</p>
-      </div>
+      <img src="images/quiet-places/quiet-06.jpg" alt="静处漫游 06" onclick="openLightbox(this.src,this.alt)">
+      <div class="cap"><p class="cn">静处漫游 06</p><p class="en">A Walk Through Quiet Places 06</p></div>
     </div>
 
   </div>
 </main>
 
-<footer>© 2026 Xiang Li / 李响 · Quiet Places Series</footer>
+<footer>© 2026 Xiang Li / 李响 · Quiet Places</footer>
 
 <div id="lightbox" class="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
   <div class="close" onclick="closeLightbox()">×</div>
@@ -227,22 +129,21 @@
 </div>
 
 <script>
-  function openLightbox(src, alt){
-    const box=document.getElementById('lightbox');
-    const img=document.getElementById('lbImg');
-    img.src=src; img.alt=alt||'';
-    box.classList.add('show');
-    document.body.style.overflow='hidden';
-  }
-  function closeLightbox(){
-    const box=document.getElementById('lightbox');
-    const img=document.getElementById('lbImg');
-    box.classList.remove('show');
-    img.src='';
-    document.body.style.overflow='';
-  }
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+function openLightbox(src, alt){
+  const box=document.getElementById('lightbox');
+  const img=document.getElementById('lbImg');
+  img.src=src; img.alt=alt||'';
+  box.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const box=document.getElementById('lightbox');
+  const img=document.getElementById('lbImg');
+  box.classList.remove('show');
+  img.src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
 </script>
-
 </body>
 </html>
