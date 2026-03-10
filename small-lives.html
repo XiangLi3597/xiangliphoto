@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>末微之声 | Small Lives, Quiet Worlds</title>
+<title>微末之声 | Small Lives, Quiet Worlds</title>
 
 <style>
 
@@ -130,7 +130,6 @@ cursor:pointer;
 </style>
 </head>
 
-
 <body>
 
 <header class="container">
@@ -147,7 +146,7 @@ cursor:pointer;
 
 <div class="hero">
 
-<h1>末微之声</h1>
+<h1>微末之声</h1>
 
 <div>Small Lives, Quiet Worlds</div>
 
@@ -155,50 +154,11 @@ cursor:pointer;
 
 </header>
 
-
-
 <main class="container">
 
-<div class="masonry">
+<div class="masonry" id="gallery"></div>
 
-<!-- 图片开始 -->
-
-<div class="item">
-<img src="images/images/small-lives/small-01.jpg" onclick="openLightbox(this.src,0)">
-<div class="cap">01</div>
-</div>
-
-<div class="item">
-<img src="images/images/small-lives/small-02.jpg" onclick="openLightbox(this.src,1)">
-<div class="cap">02</div>
-</div>
-
-<div class="item">
-<img src="images/images/small-lives/small-03.jpg" onclick="openLightbox(this.src,2)">
-<div class="cap">03</div>
-</div>
-
-<div class="item">
-<img src="images/images/small-lives/small-04.jpg" onclick="openLightbox(this.src,3)">
-<div class="cap">04</div>
-</div>
-
-<div class="item">
-<img src="images/images/small-lives/small-05.jpg" onclick="openLightbox(this.src,4)">
-<div class="cap">05</div>
-</div>
-
-<div class="item">
-<img src="images/images/small-lives/small-06.jpg" onclick="openLightbox(this.src,5)">
-<div class="cap">06</div>
-</div>
-
-<!-- 图片结束 -->
-
-</div>
 </main>
-
-
 
 <div id="lightbox" class="lightbox">
 
@@ -212,12 +172,27 @@ cursor:pointer;
 
 </div>
 
-
-
 <script>
+
+const TOTAL_IMAGES = 6
+const PREFIX = "small-lives"
 
 let images=[]
 let index=0
+
+const gallery=document.getElementById("gallery")
+
+for(let i=1;i<=TOTAL_IMAGES;i++){
+
+let num=i.toString().padStart(2,'0')
+
+gallery.innerHTML += `
+<div class="item">
+<img src="images/images/${PREFIX}/${PREFIX}-${num}.jpg" onclick="openLightbox(this.src,${i-1})">
+<div class="cap">${num}</div>
+</div>
+`
+}
 
 function openLightbox(src,i){
 
@@ -261,21 +236,14 @@ startX=e.touches[0].clientX
 
 document.getElementById("lightbox").addEventListener("touchend",e=>{
 let endX=e.changedTouches[0].clientX
-
 if(startX-endX>60)nextImage()
-
 if(endX-startX>60)prevImage()
-
 })
 
 document.addEventListener("keydown",e=>{
-
 if(e.key==="ArrowRight")nextImage()
-
 if(e.key==="ArrowLeft")prevImage()
-
 if(e.key==="Escape")closeLightbox()
-
 })
 
 </script>
