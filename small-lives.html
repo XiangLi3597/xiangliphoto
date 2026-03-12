@@ -5,247 +5,287 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>微末之声 | Small Lives, Quiet Worlds</title>
+<meta name="description" content="微末之声：关注生态环境中的微小生命，记录它们安静却真实的存在。">
 
 <style>
+:root{
+  --paper:#f6f2ea;
+  --ink:#151515;
+  --muted:#6f6f6f;
+  --line:rgba(0,0,0,.08);
+  --shadow:0 10px 28px rgba(0,0,0,.08);
+  --radius:14px;
 
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --lh:1.65;
+  --ls-title:.2px;
+  --ls-body:.1px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-margin:0;
-background:#f6f2ea;
-color:#151515;
+  font-family:var(--font);
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0,0,0,.03), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(0,0,0,.02), transparent 35%),
+    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.45)),
+    var(--paper);
+  line-height:var(--lh);
+  letter-spacing:var(--ls-body);
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-.container{
-width:min(1100px,92%);
-margin:auto;
-}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:0 auto}
 
-header{
-padding:20px 0;
-border-bottom:1px solid rgba(0,0,0,.1);
+header{padding:18px 0 10px;border-bottom:1px solid var(--line)}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:14px;
+  color:var(--muted);
 }
+.back{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.back:hover{transform:translateY(-1px)}
+
+h1,h2{letter-spacing:var(--ls-title);font-weight:650;margin:0}
 
 .series-nav{
-display:flex;
-justify-content:space-between;
-margin-bottom:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 0;
 }
-
 .navbtn{
-padding:8px 12px;
-border-radius:999px;
-border:1px solid rgba(0,0,0,.15);
-background:white;
-text-decoration:none;
-font-size:14px;
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  font-size:14px;
+  color:var(--muted);
+  transition:.15s;
+  text-decoration:none;
 }
+.navbtn:hover{transform:translateY(-1px)}
 
-.hero{
-padding:10px 0 20px;
-}
+.hero{padding:20px 0 26px}
+.sub{margin:8px 0 12px;color:var(--muted);font-size:14px}
+.desc{margin:0;max-width:860px;color:#3a3a3a;font-size:14px}
 
-.masonry{
-column-count:3;
-column-gap:16px;
-}
-
-@media(max-width:900px){
-.masonry{column-count:2;}
-}
-
-@media(max-width:600px){
-.masonry{column-count:1;}
-}
+main{padding:22px 0 44px}
+.masonry{column-count:3;column-gap:18px}
+@media (max-width:980px){.masonry{column-count:2}}
+@media (max-width:560px){.masonry{column-count:1}}
 
 .item{
-break-inside:avoid;
-margin-bottom:16px;
-background:white;
-border-radius:12px;
-overflow:hidden;
+  break-inside:avoid;
+  margin:0 0 18px;
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
 }
-
 .item img{
-width:100%;
-display:block;
-cursor:pointer;
+  width:100%;
+  height:auto;
+  display:block;
+  cursor:zoom-in;
 }
-
 .cap{
-padding:10px;
-font-size:13px;
-color:#666;
+  padding:10px 12px 12px;
+  border-top:1px solid rgba(0,0,0,.06);
+}
+.cap .cn{font-size:14px;margin:0}
+
+footer{
+  padding:18px 0 34px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
 }
 
+/* Lightbox */
 .lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.92);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
+  position:fixed;inset:0;
+  background:rgba(10,10,10,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:9999;
+  touch-action:pan-y;
 }
-
-.lightbox.show{
-display:flex;
-}
-
+.lightbox.show{display:flex}
 .lightbox img{
-max-width:95vw;
-max-height:90vh;
+  max-width:min(1600px,96vw);
+  max-height:88vh;
+  border-radius:12px;
+  background:#111;
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
 }
-
 .close{
-position:absolute;
-top:20px;
-right:30px;
-font-size:30px;
-color:white;
-cursor:pointer;
+  position:absolute;top:14px;right:16px;
+  width:40px;height:40px;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:24px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+  user-select:none;
 }
+.close:hover{background:rgba(255,255,255,.14)}
 
-.nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:42px;
-color:white;
-background:rgba(0,0,0,0.35);
-width:60px;
-height:60px;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
+/* desktop arrows */
+.lbnav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:54px;height:54px;
+  border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+  user-select:none;
 }
-
-.prev{left:20px;border-radius:30px;}
-.next{right:20px;border-radius:30px;}
-
-@media(max-width:700px){
-.nav{display:none;}
+.lbnav:hover{background:rgba(255,255,255,.18)}
+.lbprev{left:18px}
+.lbnext{right:18px}
+@media (max-width:700px){
+  .lbnav{display:none;}
 }
-
 </style>
 </head>
 
 <body>
+<header>
+  <div class="container">
+    <div class="topbar">
+      <a class="back" href="index.html">← 返回首页</a>
+      <div>Series — Small Lives, Quiet Worlds</div>
+    </div>
 
-<header class="container">
+    <div class="series-nav">
+      <a class="navbtn" href="quiet-places.html">← 上一系列</a>
+      <a class="navbtn" href="index.html">返回首页</a>
+      <a class="navbtn" href="road-encounters.html">下一系列 →</a>
+    </div>
 
-<div class="series-nav">
-
-<a class="navbtn" href="quiet-places.html">← 上一系列</a>
-
-<a class="navbtn" href="index.html">返回首页</a>
-
-<a class="navbtn" href="road-encounters.html">下一系列 →</a>
-
-</div>
-
-<div class="hero">
-
-<h1>微末之声</h1>
-
-<div>Small Lives, Quiet Worlds</div>
-
-</div>
-
+    <div class="hero">
+      <h1>微末之声</h1>
+      <div class="sub">Small Lives, Quiet Worlds</div>
+      <p class="desc">关注生态环境中的微小生命，记录它们安静却真实的存在，以及在自然中被忽略的细微世界。</p>
+    </div>
+  </div>
 </header>
 
 <main class="container">
-
-<div class="masonry" id="gallery"></div>
-
+  <div id="masonry" class="masonry"></div>
 </main>
 
-<div id="lightbox" class="lightbox">
+<footer>© 2026 Xiang Li / 李响 · Small Lives, Quiet Worlds</footer>
 
-<div class="close" onclick="closeLightbox()">×</div>
-
-<div class="nav prev" onclick="prevImage()">‹</div>
-
-<img id="viewer">
-
-<div class="nav next" onclick="nextImage()">›</div>
-
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="if(event.target.id==='lightbox') closeLightbox()">
+  <div class="close" onclick="closeLightbox()">×</div>
+  <div class="lbnav lbprev" onclick="prevImage(event)">‹</div>
+  <img id="lbImg" src="" alt="">
+  <div class="lbnav lbnext" onclick="nextImage(event)">›</div>
 </div>
 
 <script>
+/* ====== 你只需要改这里的数字 ====== */
+const TOTAL = 6; // 未来加照片：把 6 改成 10，并上传 small-07.jpg ~ small-10.jpg
+const BASE = "images/images/small-lives/";
+const PREFIX = "small-";  // 文件名：small-01.jpg
+const EXT = ".jpg";
+/* ================================= */
 
-const TOTAL_IMAGES = 6
-const PREFIX = "small-lives"
+const masonry = document.getElementById("masonry");
+const imgs = [];
 
-let images=[]
-let index=0
+function pad2(n){ return String(n).padStart(2,"0"); }
 
-const gallery=document.getElementById("gallery")
+for(let i=1;i<=TOTAL;i++){
+  const src = `${BASE}${PREFIX}${pad2(i)}${EXT}`;
+  imgs.push(src);
 
-for(let i=1;i<=TOTAL_IMAGES;i++){
-
-let num=i.toString().padStart(2,'0')
-
-gallery.innerHTML += `
-<div class="item">
-<img src="images/images/${PREFIX}/${PREFIX}-${num}.jpg" onclick="openLightbox(this.src,${i-1})">
-<div class="cap">${num}</div>
-</div>
-`
+  const item = document.createElement("div");
+  item.className = "item";
+  item.innerHTML = `
+    <img src="${src}" alt="微末之声" loading="lazy">
+    <div class="cap"><p class="cn"></p></div>
+  `;
+  item.querySelector("img").addEventListener("click", ()=> openLightbox(i-1));
+  masonry.appendChild(item);
 }
 
-function openLightbox(src,i){
+let current = 0;
+const box = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
 
-images=[...document.querySelectorAll(".item img")]
-
-index=i
-
-document.getElementById("viewer").src=src
-
-document.getElementById("lightbox").classList.add("show")
-
+function openLightbox(idx){
+  current = idx;
+  lbImg.src = imgs[current];
+  box.classList.add("show");
+  document.body.style.overflow = "hidden";
 }
-
 function closeLightbox(){
-
-document.getElementById("lightbox").classList.remove("show")
-
+  box.classList.remove("show");
+  lbImg.src = "";
+  document.body.style.overflow = "";
+}
+function prevImage(e){
+  if(e) e.stopPropagation();
+  current = (current - 1 + imgs.length) % imgs.length;
+  lbImg.src = imgs[current];
+}
+function nextImage(e){
+  if(e) e.stopPropagation();
+  current = (current + 1) % imgs.length;
+  lbImg.src = imgs[current];
 }
 
-function prevImage(){
+/* keyboard */
+document.addEventListener("keydown",(e)=>{
+  if(!box.classList.contains("show")) return;
+  if(e.key==="Escape") closeLightbox();
+  if(e.key==="ArrowLeft") prevImage();
+  if(e.key==="ArrowRight") nextImage();
+});
 
-index=(index-1+images.length)%images.length
+/* mobile swipe */
+let startX = 0;
+box.addEventListener("touchstart",(e)=>{
+  startX = e.touches[0].clientX;
+},{passive:true});
 
-document.getElementById("viewer").src=images[index].src
-
-}
-
-function nextImage(){
-
-index=(index+1)%images.length
-
-document.getElementById("viewer").src=images[index].src
-
-}
-
-let startX=0
-
-document.getElementById("lightbox").addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX
-})
-
-document.getElementById("lightbox").addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX
-if(startX-endX>60)nextImage()
-if(endX-startX>60)prevImage()
-})
-
-document.addEventListener("keydown",e=>{
-if(e.key==="ArrowRight")nextImage()
-if(e.key==="ArrowLeft")prevImage()
-if(e.key==="Escape")closeLightbox()
-})
-
+box.addEventListener("touchend",(e)=>{
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - startX;
+  if(Math.abs(dx) < 60) return;
+  if(dx > 0) prevImage();
+  else nextImage();
+},{passive:true});
 </script>
 
 </body>
