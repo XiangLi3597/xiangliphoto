@@ -252,7 +252,6 @@ async function buildGallery(){
     item.className = "item";
     item.innerHTML = `
       <img src="${src}" alt="${ALT}" loading="lazy" decoding="async">
-      <div class="cap"><p class="cn"></p></div>
     `;
     item.querySelector("img").addEventListener("click", () => openLightbox(imgs.length - 1));
     masonry.appendChild(item);
