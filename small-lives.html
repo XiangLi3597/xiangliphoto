@@ -213,30 +213,58 @@ footer{
 </div>
 
 <script>
-/* ====== 你只需要改这里的数字 ====== */
-const TOTAL = 6; // 未来加照片：把 6 改成 10，并上传 small-07.jpg ~ small-10.jpg
+/* ====== 你只需要改这里 ====== */
 const BASE = "images/images/small-lives/";
-const PREFIX = "small-";  // 文件名：small-01.jpg
+const PREFIX = "small-";
 const EXT = ".jpg";
-/* ================================= */
+const ALT = "微末之声";
+const MAX_IMAGES = 200;
+/* ============================ */
 
 const masonry = document.getElementById("masonry");
 const imgs = [];
 
-function pad2(n){ return String(n).padStart(2,"0"); }
+function pad2(n){
+  return String(n).padStart(2, "0");
+}
 
-for(let i=1;i<=TOTAL;i++){
-  const src = `${BASE}${PREFIX}${pad2(i)}${EXT}`;
-  imgs.push(src);
+function imageExists(src){
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
 
-  const item = document.createElement("div");
-  item.className = "item";
-  item.innerHTML = `
-    <img src="${src}" alt="微末之声" loading="lazy">
-    <div class="cap"><p class="cn"></p></div>
-  `;
-  item.querySelector("img").addEventListener("click", ()=> openLightbox(i-1));
-  masonry.appendChild(item);
+async function buildGallery(){
+  for(let i = 1; i <= MAX_IMAGES; i++){
+    const src = `${BASE}${PREFIX}${pad2(i)}${EXT}`;
+    const exists = await imageExists(src);
+
+    if(!exists){
+      break;
+    }
+
+    imgs.push(src);
+
+    const item = document.createElement("div");
+    item.className = "item";
+    item.innerHTML = `
+      <img src="${src}" alt="${ALT}" loading="lazy" decoding="async">
+      <div class="cap"><p class="cn"></p></div>
+    `;
+    item.querySelector("img").addEventListener("click", () => openLightbox(imgs.length - 1));
+    masonry.appendChild(item);
+  }
+
+  if(imgs.length === 0){
+    masonry.innerHTML = `
+      <div class="item">
+        <div class="cap"><p class="cn">暂无图片</p></div>
+      </div>
+    `;
+  }
 }
 
 let current = 0;
@@ -249,16 +277,19 @@ function openLightbox(idx){
   box.classList.add("show");
   document.body.style.overflow = "hidden";
 }
+
 function closeLightbox(){
   box.classList.remove("show");
   lbImg.src = "";
   document.body.style.overflow = "";
 }
+
 function prevImage(e){
   if(e) e.stopPropagation();
   current = (current - 1 + imgs.length) % imgs.length;
   lbImg.src = imgs[current];
 }
+
 function nextImage(e){
   if(e) e.stopPropagation();
   current = (current + 1) % imgs.length;
@@ -266,26 +297,28 @@ function nextImage(e){
 }
 
 /* keyboard */
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", (e) => {
   if(!box.classList.contains("show")) return;
-  if(e.key==="Escape") closeLightbox();
-  if(e.key==="ArrowLeft") prevImage();
-  if(e.key==="ArrowRight") nextImage();
+  if(e.key === "Escape") closeLightbox();
+  if(e.key === "ArrowLeft") prevImage();
+  if(e.key === "ArrowRight") nextImage();
 });
 
 /* mobile swipe */
 let startX = 0;
-box.addEventListener("touchstart",(e)=>{
+box.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
-},{passive:true});
+}, {passive:true});
 
-box.addEventListener("touchend",(e)=>{
+box.addEventListener("touchend", (e) => {
   const endX = e.changedTouches[0].clientX;
   const dx = endX - startX;
   if(Math.abs(dx) < 60) return;
   if(dx > 0) prevImage();
   else nextImage();
-},{passive:true});
+}, {passive:true});
+
+buildGallery();
 </script>
 
 </body>
